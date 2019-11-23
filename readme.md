@@ -7,13 +7,16 @@ Boot scripts for new host
 
 ``` shell
 #!/bin/bash
+BOOT_USER='denis'
+BOOT_SSH_KEY='...'
 LOG="/tmp/boo.log"
+
 cd /tmp
 sudo apt update
 sudo apt install apt-transport-https ca-certificates curl git software-properties-common
 echo url="https://www.duckdns.org/update?domains=${DUCKDOMAIN}&token=${DUCKTOKEN}&ip=" | curl -k -o $LOG -K -
 git clone https://github.com/denisglotov/boo.git >>$LOG
-BOOT_USER='denis' BOOT_SSH_KEY='...' boo/install-root.sh >>$LOG
+boo/create-user.sh "$BOOT_USER" "$BOOT_SSH_KEY" >>$LOG
 ```
 
 Installs

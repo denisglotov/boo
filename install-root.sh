@@ -12,9 +12,6 @@ fi
 sudo apt-get update
 sudo apt-get install -y build-essential curl python-dev python3-dev python3-pip
 
-curl -LO https://raw.githubusercontent.com/denisglotov/.emacs.d/master/bin/create_user.sh
-bash create-user.sh "$BOOT_USER" "$BOOT_SSH_KEY"
-
 echo "[INFO] Installing Docker..."
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
