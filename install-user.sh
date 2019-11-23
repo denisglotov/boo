@@ -8,7 +8,7 @@ bin/install_tmux.sh -s
 
 cd
 mv /tmp/config .ssh/config
-chmod 664 .ssh/config
+chmod 644 .ssh/config
 mv /tmp/id_rsa.pub .ssh/id_rsa.pub
 chmod 600 .ssh/id_rsa.pub
 
