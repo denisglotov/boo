@@ -7,12 +7,12 @@ Boot scripts for new host
 
 ``` shell
 #!/bin/bash
-sudo apt update
+LOG="/tmp/boo.log"
+sudo apt update >> $LOG
 sudo apt install apt-transport-https ca-certificates curl git software-properties-common
-echo url="https://www.duckdns.org/update?domains=${DUCKDOMAIN}&token=${DUCKTOKEN}&ip=" |
-    curl -k -o /tmp/boo.log -K -
-git clone https://github.com/denisglotov/boo.git
-BOOT_USER='denis' BOOT_SSH_KEY='...' boo/install-root.sh
+echo url="https://www.duckdns.org/update?domains=${DUCKDOMAIN}&token=${DUCKTOKEN}&ip=" | curl -k -o $LOG -K -
+git clone https://github.com/denisglotov/boo.git >>$LOG
+BOOT_USER='denis' BOOT_SSH_KEY='...' boo/install-root.sh >>$LOG
 ```
 
 Installs
