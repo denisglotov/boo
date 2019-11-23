@@ -6,8 +6,9 @@ Boot scripts for new host
 [Build status]: https://travis-ci.org/denisglotov/boo.svg?branch=master
 
 ``` shell
-apt update
-apt install apt-transport-https ca-certificates curl git software-properties-common
+#!/bin/bash
+sudo apt update
+sudo apt install apt-transport-https ca-certificates curl git software-properties-common
 echo url="https://www.duckdns.org/update?domains=${DUCKDOMAIN}&token=${DUCKTOKEN}&ip=" |
     curl -k -o /tmp/boo.log -K -
 git clone https://github.com/denisglotov/boo.git
