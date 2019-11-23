@@ -19,6 +19,7 @@ BOOT_USER='denis' BOOT_SSH_KEY='...' boo/install-root.sh >>$LOG
 Installs
 * Latest docker,
 * docker-compose 1.24.1,
-* nodejs 8, npm.
+* python3, latest pip3,
+* nodejs8, npm.
 
 Log goes to `/tmp/boo.log`.
