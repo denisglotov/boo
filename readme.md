@@ -12,7 +12,7 @@ sudo apt install apt-transport-https ca-certificates curl git software-propertie
 echo url="https://www.duckdns.org/update?domains=${DUCKDOMAIN}&token=${DUCKTOKEN}&ip=" |
     curl -k -o /tmp/boo.log -K -
 git clone https://github.com/denisglotov/boo.git
-BOOT_USER='denis' BOOT_SSH_KEY='...' boo/installl-root.sh
+BOOT_USER='denis' BOOT_SSH_KEY='...' boo/install-root.sh
 ```
 
 Installs
