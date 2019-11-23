@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 [ "$BOOT_USER" ] || BOOT_USER='denis'
 [ "$BOOT_SSH_KEY" ] || BOOT_SSH_KEY="$(cat .ssh/id_rsa.pub)"
@@ -26,18 +26,18 @@ curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compo
 chmod +x /tmp/docker-compose
 sudo mv /tmp/docker-compose /usr/local/bin/docker-compose
 
-echo "Installing Nodejs..." | tee -a $LOG
+echo "[INFO] Installing Nodejs..." | tee -a $LOG
 curl -L https://deb.nodesource.com/setup_8.x -o get-node8.sh
-bash get-node8.sh
+sudo bash get-node8.sh
 sudo apt install nodejs
 
+echo "[INFO] Preparing files for user installation..." | tee -a $LOG
 cp .ssh/config /tmp
-chmod $BOOT_USER:$BOOT_USER /tmp/sshconfig
+sudo chown $BOOT_USER:$BOOT_USER /tmp/config
+cp .ssh/id_rsa.pub /tmp
+sudo chown $BOOT_USER:$BOOT_USER /tmp/id_rsa.pub
 
-cp .ssh/id_rsa.pub /tmp/id_rsa.pub
-chmod $BOOT_USER:$BOOT_USER /tmp/id_rsa.pub
+echo "[INFO] Running user installation..." | tee -a $LOG
+sudo -Hu $BOOT_USER bash install-user.sh
 
-echo "Running user installation..." | tee -a $LOG
-sudo -Hu $BOOT_USER bash userinit.sh
-
-echo "All done." | tee -a $LOG
+echo "All done!" | tee -a $LOG

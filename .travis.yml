@@ -4,11 +4,11 @@ dist: bionic
 
 install:
   - sudo apt update
-  - apt install apt-transport-https ca-certificates curl git software-properties-common
+  - sudo apt install apt-transport-https ca-certificates curl git software-properties-common
 
 script:
-  - install-root.sh
+  - ./install-root.sh
 
 after_script:
-  - echo "The resulting log:"
-  - cat /tmp/boo.log
+  - echo "[INFO] The resulting log:" && cat /tmp/boo.log
+  - echo "[INFO] Github user:" && sudo -Hu denis ssh -o StrictHostKeyChecking=no git@github.com
