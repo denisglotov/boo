@@ -31,8 +31,10 @@ sudo bash get-node8.sh
 sudo apt-get install -y nodejs
 
 echo "[INFO] Preparing files for user installation..."
-sudo chown $BOOT_USER:$BOOT_USER .ssh/config
-sudo chown $BOOT_USER:$BOOT_USER .ssh/id_rsa.pub
+cp .ssh/config /tmp
+sudo chown $BOOT_USER:$BOOT_USER /tmp/config
+cp .ssh/id_rsa.pub /tmp
+sudo chown $BOOT_USER:$BOOT_USER /tmp/id_rsa.pub
 
 echo "[INFO] Running user installation..."
 sudo -Hu $BOOT_USER bash install-user.sh
