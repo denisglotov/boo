@@ -8,6 +8,7 @@ if ! sudo -v; then
     exit
 fi
 
+cd $(dirname $0)
 sudo apt update
 sudo apt install build-essential curl python3-dev
 
