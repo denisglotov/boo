@@ -1,5 +1,6 @@
 #!/bin/bash -e
 
+cd
 git clone https://github.com/denisglotov/.emacs.d
 cd .emacs.d
 git checkout dev
