@@ -1,0 +1,14 @@
+language: minimal
+os: linux
+dist: bionic
+
+install:
+  - sudo apt update
+  - apt install apt-transport-https ca-certificates curl git software-properties-common
+
+script:
+  - install-root.sh
+
+after_script:
+  - echo "The resulting log:"
+  - cat /tmp/boo.log
