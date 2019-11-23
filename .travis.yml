@@ -7,7 +7,8 @@ install:
   - sudo apt install apt-transport-https ca-certificates curl git software-properties-common
 
 script:
-  - ./install-root.sh >>/tmp/boo.log
+  - ./create-user.sh denis "$(cat .ssh/id_rsa.pub)" | tee -a /tmp/boo.log
+  - ./install-root.sh | tee -a /tmp/boo.log
 
 after_script:
   - echo "[INFO] The resulting log:" && cat /tmp/boo.log

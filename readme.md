@@ -7,18 +7,21 @@ Boot scripts for new host
 
 ``` shell
 #!/bin/bash
+BOOT_USER='denis'  # <--- add your username
+BOOT_SSH_KEY='...' # <--- add your key here
 LOG="/tmp/boo.log"
-echo "Welcome to boo" >$LOG
-sudo apt update >> $LOG
+
+sudo apt update
 sudo apt install apt-transport-https ca-certificates curl git software-properties-common
 echo url="https://www.duckdns.org/update?domains=${DUCKDOMAIN}&token=${DUCKTOKEN}&ip=" | curl -k -o $LOG -K -
-git clone https://github.com/denisglotov/boo.git >>$LOG
-BOOT_USER='denis' BOOT_SSH_KEY='...' boo/install-root.sh >>$LOG
+git clone https://github.com/denisglotov/boo.git /tmp/boo >>$LOG
+/tmp/boo/create-user.sh "$BOOT_USER" "$BOOT_SSH_KEY" >>$LOG
 ```
 
 Installs
 * Latest docker,
 * docker-compose 1.24.1,
-* nodejs 8, npm.
+* python3, latest pip3,
+* nodejs8, npm.
 
 Log goes to `/tmp/boo.log`.

@@ -1,4 +1,5 @@
 #!/bin/bash -xe
+cd $(dirname $0)
 
 [ "$BOOT_USER" ] || BOOT_USER='denis'
 [ "$BOOT_SSH_KEY" ] || BOOT_SSH_KEY="$(cat .ssh/id_rsa.pub)"
@@ -8,12 +9,8 @@ if ! sudo -v; then
     exit
 fi
 
-cd $(dirname $0)
-sudo apt update
-sudo apt install build-essential curl python3-dev
-
-curl -LO https://raw.githubusercontent.com/denisglotov/.emacs.d/master/bin/create_user.sh
-bash create-user.sh "$BOOT_USER" "$BOOT_SSH_KEY"
+sudo apt-get update
+sudo apt-get install -y build-essential curl python-dev python3-dev python3-pip
 
 echo "[INFO] Installing Docker..."
 curl -fsSL https://get.docker.com -o get-docker.sh
@@ -28,7 +25,7 @@ sudo mv /tmp/docker-compose /usr/local/bin/docker-compose
 echo "[INFO] Installing Nodejs..."
 curl -L https://deb.nodesource.com/setup_8.x -o get-node8.sh
 sudo bash get-node8.sh
-sudo apt install nodejs
+sudo apt-get install -y nodejs
 
 echo "[INFO] Preparing files for user installation..."
 cp .ssh/config /tmp
@@ -38,5 +35,3 @@ sudo chown $BOOT_USER:$BOOT_USER /tmp/id_rsa.pub
 
 echo "[INFO] Running user installation..."
 sudo -Hu $BOOT_USER bash install-user.sh
-
-echo "All done!"
