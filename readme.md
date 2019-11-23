@@ -8,8 +8,8 @@ Boot scripts for new host
 ``` shell
 #!/bin/bash
 LOG="/tmp/boo.log"
-echo "Welcome to boo" >$LOG
-sudo apt update >> $LOG
+cd /tmp
+sudo apt update
 sudo apt install apt-transport-https ca-certificates curl git software-properties-common
 echo url="https://www.duckdns.org/update?domains=${DUCKDOMAIN}&token=${DUCKTOKEN}&ip=" | curl -k -o $LOG -K -
 git clone https://github.com/denisglotov/boo.git >>$LOG
