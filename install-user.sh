@@ -1,11 +1,11 @@
-#!/bin/bash -e
+#!/bin/bash -xe
 
 cd
 git clone https://github.com/denisglotov/.emacs.d
 cd .emacs.d
 git checkout dev
 bin/install_emacs.sh
-bin/install_tmux.sh -s -c "#386439"
+bin/install_tmux.sh -s
 
 cd
 mv /tmp/config .ssh/config

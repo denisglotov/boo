@@ -7,8 +7,8 @@ install:
   - sudo apt install apt-transport-https ca-certificates curl git software-properties-common
 
 script:
-  - ./install-root.sh
+  - ./install-root.sh >>/tmp/boo.log
 
 after_script:
   - echo "[INFO] The resulting log:" && cat /tmp/boo.log
-  - echo "[INFO] Github user:" && sudo -Hu denis ssh -o StrictHostKeyChecking=no git@github.com
+
