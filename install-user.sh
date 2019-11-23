@@ -3,7 +3,7 @@
 cd
 git clone --branch dev https://github.com/denisglotov/.emacs.d
 cd .emacs.d
-bin/install_emacs.sh
+bin/install_emacs.sh 26
 bin/install_tmux.sh -s
 
 cd
