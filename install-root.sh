@@ -1,4 +1,5 @@
 #!/bin/bash -xe
+cd $(dirname $0)
 
 [ "$BOOT_USER" ] || BOOT_USER='denis'
 [ "$BOOT_SSH_KEY" ] || BOOT_SSH_KEY="$(cat .ssh/id_rsa.pub)"
@@ -8,7 +9,6 @@ if ! sudo -v; then
     exit
 fi
 
-cd $(dirname $0)
 sudo apt-get update
 sudo apt-get install -y build-essential curl python3-dev
 
