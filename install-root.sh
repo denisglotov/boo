@@ -33,9 +33,9 @@ sudo apt install nodejs
 
 echo "[INFO] Preparing files for user installation..." | tee -a $LOG
 cp .ssh/config /tmp
-chown $BOOT_USER:$BOOT_USER /tmp/config
+sudo chown $BOOT_USER:$BOOT_USER /tmp/config
 cp .ssh/id_rsa.pub /tmp
-chown $BOOT_USER:$BOOT_USER /tmp/id_rsa.pub
+sudo chown $BOOT_USER:$BOOT_USER /tmp/id_rsa.pub
 
 echo "[INFO] Running user installation..." | tee -a $LOG
 sudo -Hu $BOOT_USER bash install-user.sh
