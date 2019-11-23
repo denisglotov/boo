@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 git clone https://github.com/denisglotov/.emacs.d
 cd .emacs.d

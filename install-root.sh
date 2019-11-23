@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 [ "$BOOT_USER" ] || BOOT_USER='denis'
 [ "$BOOT_SSH_KEY" ] || BOOT_SSH_KEY="$(cat .ssh/id_rsa.pub)"
@@ -32,12 +32,12 @@ bash get-node8.sh
 sudo apt install nodejs
 
 cp .ssh/config /tmp
-chmod $BOOT_USER:$BOOT_USER /tmp/sshconfig
+chown $BOOT_USER:$BOOT_USER /tmp/sshconfig
 
 cp .ssh/id_rsa.pub /tmp/id_rsa.pub
-chmod $BOOT_USER:$BOOT_USER /tmp/id_rsa.pub
+chown $BOOT_USER:$BOOT_USER /tmp/id_rsa.pub
 
 echo "Running user installation..." | tee -a $LOG
-sudo -Hu $BOOT_USER bash userinit.sh
+sudo -Hu $BOOT_USER bash install-user.sh
 
 echo "All done." | tee -a $LOG
