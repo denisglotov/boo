@@ -10,5 +10,5 @@ script:
   - ./install-root.sh
 
 after_script:
-  - echo "The resulting log:"
-  - cat /tmp/boo.log
+  - echo "[INFO] The resulting log:" && cat /tmp/boo.log
+  - echo "[INFO] Github user:" && bash -Hu denis ssh git@github.com

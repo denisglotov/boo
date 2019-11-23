@@ -32,10 +32,10 @@ sudo bash get-node8.sh
 sudo apt install nodejs
 
 cp .ssh/config /tmp
-chown $BOOT_USER:$BOOT_USER /tmp/sshconfig
+chown $BOOT_USER:$BOOT_USER /tmp/.ssh/config
 
-cp .ssh/id_rsa.pub /tmp/id_rsa.pub
-chown $BOOT_USER:$BOOT_USER /tmp/id_rsa.pub
+cp .ssh/id_rsa.pub /tmp
+chown $BOOT_USER:$BOOT_USER /tmp/.ssh/id_rsa.pub
 
 echo "Running user installation..." | tee -a $LOG
 sudo -Hu $BOOT_USER bash install-user.sh
