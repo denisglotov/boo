@@ -7,7 +7,7 @@ install:
   - sudo apt install apt-transport-https ca-certificates curl git software-properties-common
 
 script:
-  - install-root.sh
+  - ./install-root.sh
 
 after_script:
   - echo "The resulting log:"
