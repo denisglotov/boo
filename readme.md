@@ -20,4 +20,4 @@ Installs
 * docker-compose 1.24.1,
 * nodejs 8, npm.
 
-Log goes to '/tmp/boo.log'.
+Log goes to `/tmp/boo.log`.
