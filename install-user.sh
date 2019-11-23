@@ -14,6 +14,6 @@ chmod 600 .ssh/id_rsa.pub
 
 git config --global user.name "Denis Glotov"
 
-pip install --user -U pip
-pip install --user setuptools
-pip install --user dymka
+pip3 install --user -U pip
+pip3 install --user setuptools
+pip3 install --user dymka
