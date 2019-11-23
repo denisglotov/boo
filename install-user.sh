@@ -6,8 +6,7 @@ git clone https://github.com/denisglotov/.emacs.d
 cd .emacs.d
 git checkout dev || true
 bin/install_emacs.sh 26
-bin/install_tmux.sh -s
-emacs --batch -L lisp -l .emacs.d/init.el >/tmp/emacs.log 2>/tmp/emacs.err &
+bin/install_tmux.sh -s -c "#386439"
 
 echo "[INFO] Running emacs daemon."
 nohup emacs --batch -L lisp -l init.el >/tmp/emacs.log 2>/tmp/emacs.err &
