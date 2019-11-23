@@ -31,13 +31,13 @@ curl -L https://deb.nodesource.com/setup_8.x -o get-node8.sh
 sudo bash get-node8.sh
 sudo apt install nodejs
 
+echo "[INFO] Preparing files for user installation..." | tee -a $LOG
 cp .ssh/config /tmp
-chown $BOOT_USER:$BOOT_USER /tmp/.ssh/config
-
+chown $BOOT_USER:$BOOT_USER /tmp/config
 cp .ssh/id_rsa.pub /tmp
-chown $BOOT_USER:$BOOT_USER /tmp/.ssh/id_rsa.pub
+chown $BOOT_USER:$BOOT_USER /tmp/id_rsa.pub
 
-echo "Running user installation..." | tee -a $LOG
+echo "[INFO] Running user installation..." | tee -a $LOG
 sudo -Hu $BOOT_USER bash install-user.sh
 
-echo "All done." | tee -a $LOG
+echo "All done!" | tee -a $LOG
