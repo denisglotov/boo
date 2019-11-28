@@ -13,7 +13,11 @@ mv /tmp/id_rsa.pub .ssh/id_rsa.pub
 chmod 600 .ssh/id_rsa.pub
 
 git config --global user.name "Denis Glotov"
+git config --global user.email denis@glotov.org
 
 pip3 install --user -U pip
-pip3 install --user setuptools
-pip3 install --user dymka
+
+cp /tmp/boo/install-src.sh .
+
+# [INFO] All done. Please log out and log in so local changes take effect.
+#        Then use ./install-src.sh
