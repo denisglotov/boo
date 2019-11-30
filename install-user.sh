@@ -1,8 +1,9 @@
 #!/bin/bash -xe
 
 cd
-git clone --branch dev https://github.com/denisglotov/.emacs.d
+git clone https://github.com/denisglotov/.emacs.d
 cd .emacs.d
+git checkout dev || true
 bin/install_emacs.sh 26
 bin/install_tmux.sh -s
 
