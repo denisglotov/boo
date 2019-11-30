@@ -19,5 +19,5 @@ pip3 install --user -U pip
 
 cp /tmp/boo/install-src.sh .
 
-# [INFO] All done. Please log out and log in so local changes take effect.
-#        Then use ./install-src.sh
+echo "[INFO] All done. Please log out and log in so local changes take effect."
+echo "       Then use ./install-src.sh"
