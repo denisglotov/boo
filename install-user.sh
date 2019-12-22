@@ -1,13 +1,18 @@
 #!/bin/bash -xe
 
 cd
+echo "[INFO] Installing emacs and tmux."
 git clone https://github.com/denisglotov/.emacs.d
 cd .emacs.d
 git checkout dev || true
 bin/install_emacs.sh 26
 bin/install_tmux.sh -s
 
+echo "[INFO] Running emacs daemon."
+nohup emacs --batch -L lisp -l init.el >/tmp/emacs.log 2>/tmp/emacs.err &
+
 cd
+echo "[INFO] Installing public key and remaining stuff."
 mv /tmp/config .ssh/config
 chmod 644 .ssh/config
 mv /tmp/id_rsa.pub .ssh/id_rsa.pub
