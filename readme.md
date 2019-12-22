@@ -21,6 +21,7 @@ Installs
 * Latest docker,
 * docker-compose 1.24.1,
 * python3, latest pip3,
-* nodejs8, npm.
+* nodejs8, npm,
+* open JDK 8.
 
 Log goes to `/tmp/boo.log`.

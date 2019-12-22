@@ -27,6 +27,9 @@ curl -L https://deb.nodesource.com/setup_8.x -o get-node8.sh
 sudo bash get-node8.sh
 sudo apt-get install -y nodejs
 
+echo "[INFO] Installing java JDK..."
+sudo apt-get install -y openjdk-8-jdk-headless
+
 echo "[INFO] Preparing files for user installation..."
 cp .ssh/config /tmp
 sudo chown $BOOT_USER:$BOOT_USER /tmp/config
