@@ -22,7 +22,7 @@ cd /tmp/boo && git checkout dev || true
 After the VM is created, run
 
 ``` shell
-ssh-keygen -f "/home/denis/.ssh/known_hosts" -R "vultrone.duckdns.org"ssh-keygen -f "/home/denis/.ssh/known_hosts" -R "vultrone.duckdns.org"
+ssh-keygen -f "/home/denis/.ssh/known_hosts" -R "vultrone.duckdns.org"
 ssh vultrone /tmp/boo/install-root.sh
 ```
 
