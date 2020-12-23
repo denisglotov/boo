@@ -3,8 +3,7 @@
 cd
 echo "[INFO] Installing emacs and tmux."
 git clone https://github.com/denisglotov/.emacs.d
-cd .emacs.d
-git checkout dev || true
+cd .emacs.d && git checkout dev || true
 bin/install_emacs.sh
 bin/install_tmux.sh -s
 

@@ -13,8 +13,8 @@ sudo apt-get update
 sudo apt-get install -y build-essential curl python-dev python3-dev python3-pip
 
 echo "[INFO] Installing Docker..."
-curl -fsSL https://get.docker.com -o get-docker.sh
-sudo sh get-docker.sh
+curl -fsSL https://get.docker.com -o /tmp/get-docker.sh
+sudo sh /tmp/get-docker.sh
 sudo usermod -aG docker "$BOOT_USER"
 
 echo "[INFO] Installing docker-compose..."
