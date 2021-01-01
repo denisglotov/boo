@@ -13,22 +13,14 @@ sudo apt-get update
 sudo apt-get install -y build-essential curl python-dev python3-dev python3-pip
 
 echo "[INFO] Installing Docker..."
-curl -fsSL https://get.docker.com -o get-docker.sh
-sudo sh get-docker.sh
+curl -fsSL https://get.docker.com -o /tmp/get-docker.sh
+sudo sh /tmp/get-docker.sh
 sudo usermod -aG docker "$BOOT_USER"
 
 echo "[INFO] Installing docker-compose..."
-curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /tmp/docker-compose
+curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /tmp/docker-compose
 chmod +x /tmp/docker-compose
 sudo mv /tmp/docker-compose /usr/local/bin/docker-compose
-
-echo "[INFO] Installing Nodejs..."
-curl -L https://deb.nodesource.com/setup_8.x -o get-node8.sh
-sudo bash get-node8.sh
-sudo apt-get install -y nodejs
-
-echo "[INFO] Installing java JDK..."
-sudo apt-get install -y openjdk-8-jdk-headless
 
 echo "[INFO] Preparing files for user installation..."
 cp .ssh/config /tmp

@@ -7,21 +7,66 @@ Boot scripts for new host
 
 ``` shell
 #!/bin/bash
-BOOT_USER='denis'  # <--- add your username
-BOOT_SSH_KEY='...' # <--- add your key here
+BOOT_USER='denis'     # <--- add your username
+DUCKDOMAIN='vultrone' # <--- domain for duckdns
+DUCKTOKEN='...'       # <--- token for duckdns
 
 sudo apt update
 sudo apt install apt-transport-https ca-certificates curl git software-properties-common
 echo url="https://www.duckdns.org/update?domains=${DUCKDOMAIN}&token=${DUCKTOKEN}&ip=" | curl -k -o /tmp/boo.log -K -
 git clone https://github.com/denisglotov/boo.git /tmp/boo
-/tmp/boo/create-user.sh "$BOOT_USER" "$BOOT_SSH_KEY"
+cd /tmp/boo && git checkout dev || true
+/tmp/boo/create-user.sh "$BOOT_USER" "$(cat /tmp/boo/.ssh/id_rsa.pub)"
+```
+
+After the VM is created, run
+
+``` shell
+ssh-keygen -f "/home/denis/.ssh/known_hosts" -R "vultrone.duckdns.org"
+ssh vultrone /tmp/boo/install-root.sh
 ```
 
 Installs
-* Latest docker,
-* docker-compose 1.24.1,
-* python3, latest pip3,
-* nodejs8, npm,
-* open JDK 8.
+--------
 
-Log goes to `/tmp/boo.log`.
+* Latest docker (https://docs.docker.com/engine/install/ubuntu/),
+* docker-compose 1.27.4 (https://docs.docker.com/compose/install/),
+* python3, latest pip3.
+
+Logs
+----
+
+Log go to `/tmp/boo.log`.
+
+
+Ssh agent forwarding
+--------------------
+
+Note that you need to use `ssh-agent` to make your keys forwarded. I use the
+following snippet in `.bashrc`:
+
+``` shell
+if [ ! -S /tmp/ssh_auth_sock ]; then
+    echo -e "Starting the ssh-agent: "
+    eval `ssh-agent`
+    ln -sf "$SSH_AUTH_SOCK" /tmp/ssh_auth_sock
+fi
+export SSH_AUTH_SOCK=/tmp/ssh_auth_sock
+ssh-add -l > /dev/null || ssh-add
+```
+
+And the following in record `.ssh/config`:
+
+    Host vultrone
+    Hostname vultrone.duckdns.org
+    User denis
+    ForwardAgent yes
+    IdentityFile ~/.ssh/id_rsa
+    IdentitiesOnly yes
+
+
+Ssh keys
+--------
+
+[!] Remember to keep your current public keys committed to
+`.ssh/id_rsa.pub`. Alternatively, update `create-user.sh` argument.
