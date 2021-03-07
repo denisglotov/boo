@@ -4,7 +4,7 @@ dist: focal
 
 install:
   - sudo apt update
-  - sudo apt install apt-transport-https ca-certificates curl git software-properties-common
+  - sudo apt install apt-transport-https ca-certificates curl software-properties-common
 
 script:
   - ./create-user.sh denis "$(cat .ssh/id_rsa.pub)" | tee -a /tmp/boo.log

@@ -10,7 +10,7 @@ if ! sudo -v; then
 fi
 
 sudo apt-get update
-sudo apt-get install -y build-essential curl python-dev python3-dev python3-pip
+sudo apt-get install -y build-essential curl git python-dev python3-dev python3-pip
 
 echo "[INFO] Installing Docker..."
 curl -fsSL https://get.docker.com -o /tmp/get-docker.sh

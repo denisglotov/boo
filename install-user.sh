@@ -21,6 +21,7 @@ git config --global user.name "Denis Glotov"
 git config --global user.email denis@glotov.org
 
 pip3 install --user -U pip
+pip3 install virtaulenv flake8
 
 cp /tmp/boo/install-src.sh .
 

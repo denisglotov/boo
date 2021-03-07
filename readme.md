@@ -12,18 +12,16 @@ DUCKDOMAIN='vultrone' # <--- domain for duckdns
 DUCKTOKEN='...'       # <--- token for duckdns
 
 sudo apt update
-sudo apt install apt-transport-https ca-certificates curl git software-properties-common
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
 echo url="https://www.duckdns.org/update?domains=${DUCKDOMAIN}&token=${DUCKTOKEN}&ip=" | curl -k -o /tmp/boo.log -K -
-git clone https://github.com/denisglotov/boo.git /tmp/boo
-cd /tmp/boo && git checkout dev || true
-/tmp/boo/create-user.sh "$BOOT_USER" "$(cat /tmp/boo/.ssh/id_rsa.pub)"
+curl https://raw.githubusercontent.com/denisglotov/boo/master/create-user.sh | bash -s -- "$BOOT_USER" "$(curl https://glotov.org/ssh)"
 ```
 
 After the VM is created, run
 
 ``` shell
 ssh-keygen -f "/home/denis/.ssh/known_hosts" -R "vultrone.duckdns.org"
-ssh vultrone /tmp/boo/install-root.sh
+ssh vultrone "git clone -b dev https://github.com/denisglotov/boo.git && ./boo/install-root.sh"
 ```
 
 Installs
