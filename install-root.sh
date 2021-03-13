@@ -14,7 +14,8 @@ fi
 
 echo "[INFO] Installing common packages and Python3..."
 sudo apt-get update
-sudo apt-get install -y apt-transport-https ca-certificates curl git software-properties-common build-essential python3-dev python3-pip python3-venv
+sudo apt-get install -y apt-transport-https ca-certificates curl git software-properties-common build-essential
+sudo apt-get install -y python3-dev python3-pip python3-venv python-is-python3
 
 echo "[INFO] Installing Docker..."
 curl -fsSL https://get.docker.com -o /tmp/get-docker.sh
