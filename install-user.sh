@@ -1,5 +1,7 @@
 #!/bin/bash -xe
-
+#
+# Install user-specific packages
+#
 cd
 echo "[INFO] Installing emacs and tmux."
 git clone https://github.com/denisglotov/.emacs.d
@@ -20,10 +22,9 @@ chmod 600 .ssh/id_rsa.pub
 git config --global user.name "Denis Glotov"
 git config --global user.email denis@glotov.org
 
-pip3 install --user -U pip
-pip3 install virtaulenv flake8
-
-cp /tmp/boo/install-src.sh .
+python -m pip install --upgrade pip
+pip install --user flake8
+mkdir bin src
 
 echo "[INFO] All done. Please log out and log in so local changes take effect."
-echo "       Then use ./install-src.sh"
+echo "       Then use 'source boo/install-src.sh'."

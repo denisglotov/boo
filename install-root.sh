@@ -1,7 +1,10 @@
 #!/bin/bash -xe
+#
+# Installing global packages (that need sudo).
+#
 cd $(dirname $0)
 
-[ "$BOOT_USER" ] || BOOT_USER='denis'
+[ "$BOOT_USER" ] || BOOT_USER=$USER
 [ "$BOOT_SSH_KEY" ] || BOOT_SSH_KEY="$(cat .ssh/id_rsa.pub)"
 
 if ! sudo -v; then
@@ -9,8 +12,10 @@ if ! sudo -v; then
     exit
 fi
 
+echo "[INFO] Installing common packages and Python3..."
 sudo apt-get update
-sudo apt-get install -y build-essential curl git python-dev python3-dev python3-pip
+sudo apt-get install -y apt-transport-https ca-certificates curl git software-properties-common build-essential
+sudo apt-get install -y python3-dev python3-pip python3-venv python-is-python3
 
 echo "[INFO] Installing Docker..."
 curl -fsSL https://get.docker.com -o /tmp/get-docker.sh
