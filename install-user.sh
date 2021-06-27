@@ -14,10 +14,10 @@ nohup emacs --batch -L lisp -l init.el >/tmp/emacs.log 2>/tmp/emacs.err &
 
 cd
 echo "[INFO] Installing public key for key forwarding."
-mv /tmp/config .ssh/config
+cp ./config .ssh/config
 chmod 644 .ssh/config
-mv /tmp/id_rsa.pub .ssh/id_rsa.pub
-chmod 600 .ssh/id_rsa.pub
+cp ./id_*.pub .ssh/
+chmod 600 .ssh/id_*.pub
 
 git config --global user.name "Denis Glotov"
 git config --global user.email denis@glotov.org
