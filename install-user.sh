@@ -14,9 +14,9 @@ nohup emacs --batch -L lisp -l init.el >/tmp/emacs.log 2>/tmp/emacs.err &
 
 cd
 echo "[INFO] Installing public key for key forwarding."
-cp ./config .ssh/config
+cp boo/.ssh/config .ssh/config
 chmod 644 .ssh/config
-cp ./id_*.pub .ssh/
+cp boo/.ssh/id_*.pub .ssh/
 chmod 600 .ssh/id_*.pub
 
 git config --global user.name "Denis Glotov"
