@@ -26,5 +26,9 @@ python -m pip install --upgrade pip
 pip install --user flake8
 mkdir bin src
 
+echo "[INFO] Installing nvm, yarn and pip."
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+curl -o- -L https://yarnpkg.com/install.sh | bash
+
 echo "[INFO] All done. Please log out and log in so local changes take effect."
 echo "       Then use 'source boo/install-src.sh'."
