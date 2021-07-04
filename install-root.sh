@@ -27,11 +27,5 @@ curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compo
 chmod +x /tmp/docker-compose
 sudo mv /tmp/docker-compose /usr/local/bin/docker-compose
 
-echo "[INFO] Preparing files for user installation..."
-cp .ssh/config /tmp
-sudo chown $BOOT_USER:$BOOT_USER /tmp/config
-cp .ssh/id_rsa.pub /tmp
-sudo chown $BOOT_USER:$BOOT_USER /tmp/id_rsa.pub
-
 echo "[INFO] Running user installation..."
 sudo -Hu $BOOT_USER bash install-user.sh
